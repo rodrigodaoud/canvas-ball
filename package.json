@@ -8,19 +8,33 @@
     "serve": "npm run start && npm run watch",
     "start": "webpack-dev-server --mode development",
     "watch": "webpack -w --mode development",
-    "cypress:open": "cypress open"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
+    "@testing-library/jest-dom": "^5.16.2",
     "babel-loader": "^8.2.3",
+    "canvas": "^2.9.0",
     "css-loader": "^6.6.0",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.5.1",
+    "jest-canvas-mock": "^2.3.1",
+    "jest-extended": "^2.0.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.4"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFiles": [
+      "jest-canvas-mock"
+    ],
+    "setupFilesAfterEnv": [
+      "./src/testSetup.js"
+    ]
   }
 }
