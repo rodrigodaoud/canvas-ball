@@ -13,7 +13,6 @@ export const Canvas = () => {
 
     canvas.addEventListener('click', (e) => {
       balls.push(Ball(context, canvas, { x: e.clientX, y: e.clientY }));
-      console.log(balls);
     });
   }
 

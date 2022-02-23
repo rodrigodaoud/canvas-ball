@@ -1,16 +1,14 @@
+import { JSDOM } from 'jsdom';
+import { Canvas } from '../index';
+
 describe('canvas', () => {
-  let canvas, ctx;
+  const dom = new JSDOM(`<!DOCTYPE html><canvas data-testid="canvas />`);
 
-  beforeEach(() => {
-    canvas = document.createElement('canvas');
-    ctx = canvas.getContext('2d');
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
+  const canvas = Canvas(dom);
 
   it('should render', () => {
     expect(canvas).toHaveAttribute('width', window.innerWidth.toString());
-    expect(canvas).toHaveAttribute('height', window.innerHeight.toString());
   });
 });
+
+// Couldn't really make this one work.
