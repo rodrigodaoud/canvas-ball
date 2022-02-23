@@ -8,6 +8,7 @@ Start server - `npm run serve`
 
 It should start a local server at http://localhost:8080/
 
+Or go to -> https://canvas-ball.surge.sh/
 
 ## Testing
 
