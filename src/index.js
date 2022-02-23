@@ -1,22 +1,24 @@
 import { Ball } from './js/ball';
 import './style/index.css';
 
-(() => {
+export const Canvas = () => {
   const canvas = document.getElementById('canvas');
-  const context = canvas.getContext('2d');
-  const rect = canvas.getBoundingClientRect();
-
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
+  let context;
   let balls = [];
 
-  canvas.addEventListener('click', (e) => {
-    balls.push(Ball(context, canvas, { x: e.clientX - rect.left, y: e.clientY - rect.y }));
-  });
+  if (canvas) {
+    context = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    canvas.addEventListener('click', (e) => {
+      balls.push(Ball(context, canvas, { x: e.clientX, y: e.clientY }));
+      console.log(balls);
+    });
+  }
 
   const update = () => {
-    context.clearRect(0, 0, canvas.width, canvas.height);
+    context && context.clearRect(0, 0, canvas.width, canvas.height);
 
     balls.forEach((ball) => {
       ball.draw();
@@ -27,4 +29,6 @@ import './style/index.css';
   };
 
   update();
-})();
+};
+
+Canvas();
